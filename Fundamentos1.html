@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamento de Programacion JavaScript parte 1</title>
+    <meta name="Description" content="En esta serie de ejercicios aprenderemos programacion en JavaScript">
+    <style>
+        body,
+        html {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Fundamentos de Programacion JavaScript parte 1</h1>
+    <p>
+        <a href="index.html">Regresar al inicio</a>
+    </p>
+    <h2>Definiendo un Perro</h2>
+    <script>
+        function perro(n, r, e, s, a, f, c) {
+            var o = this; //This dentro de una funcion es el objeto que se define en la funcion
+            var imagen = document.createElement("img");
+            o.nombre = n;
+            o.raza = r;
+            o.edad = e;
+            //o.sexo = s;
+            o.adiestrado = a;
+            o.foto = f;
+
+
+            //Asignacion (1 igual a =)
+            //Comparacion (2 iguales a ==) Compara que los valores sean iguales
+            //o.sexo = (s == true) ? "Macho" : "Hembra";
+            //Identico (3 iguales a ===) Compara que los valores y su tipo de datos sean identicos
+            //o.sexo = (s === true) ? "Macho" : "Hembra";
+            //Operador ternario
+            //variable = (condicion)?verdadero:falso
+            o.sexo = (s) ? "Macho" : "Hembra";
+
+
+            o.aparecer = function() {
+                //alert("El objeto aparece")
+                //imagen = document.createElement("img");
+                imagen.src = o.foto;
+                imagen.alt = o.nombre;
+                imagen.title = o.nombre;
+
+                document.body.appendChild(imagen);
+            }
+
+            o.ladrar = function() {
+                alert("Guau!!  Guau!!");
+                var audio = document.createElement("audio");
+                audio.src = "activos/guau.mp3";
+
+                //audio.controls = true;
+                //document.body.appendChild(audio);
+                return audio.play();
+            }
+
+            o.comer = function(c) {
+                o.comida = c;
+                var alerta = alert(o.nombre + " comió " + o.comida);
+                return alerta;
+            }
+
+            o.mover = function() {
+                //alert("El objeto se ha movido");
+                imagen.style.position = "relative";
+                imagen.style.left = "10em";
+                imagen.style.borderRadius = "100%";
+            }
+        }
+
+        function iniciar() {
+            //alert("Ejecutando funcion inicar");
+            var kenai = new perro("Kenai", "Firefox", 2, true, true, "activos/kenai.jpg");
+            //alert(kenai);
+            document.write(kenai + "<br>" + window + "<br>" + document + "<br>" + navigator);
+            //console.log(kenai, window, navigator, document);
+            document.write("<p>" + kenai.nombre + "</p>")
+            document.write("<p>" + kenai.raza + "</p>")
+            document.write("<p>" + kenai.edad + "</p>")
+            document.write("<p>" + kenai.sexo + "</p>")
+            document.write("<p>" + kenai.adiestrado + "</p>")
+
+            kenai.aparecer();
+            kenai.ladrar();
+            kenai.comer("croquetas");
+            kenai.comer("carnecitas");
+            kenai.mover();
+        }
+        iniciar();
+    </script>
+</body>
+
+</html>
